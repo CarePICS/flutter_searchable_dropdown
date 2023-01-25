@@ -632,10 +632,11 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
           ).top;
 
           return Container(
-            margin: EdgeInsets.only(
-              bottom: viewInsetsBottom,
-              top: viewPaddingTop,
-            ),
+            margin: widget.popupProps.modalBottomSheetProps.padding ??
+                EdgeInsets.only(
+                  bottom: viewInsetsBottom,
+                  top: viewPaddingTop,
+                ),
             child: _popupWidgetInstance(),
           );
         });

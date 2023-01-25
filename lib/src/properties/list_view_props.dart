@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class ListViewProps {
+class ListViewProps<T> {
   final Axis scrollDirection;
   final bool reverse;
   final ScrollController? controller;
@@ -19,6 +19,8 @@ class ListViewProps {
   final String? restorationId;
   final double? itemExtent;
   final Clip clipBehavior;
+  final List<Widget> Function(List<T>, Widget Function(T) itemBuilder)?
+      listBuilder;
 
   const ListViewProps({
     this.scrollDirection = Axis.vertical,
@@ -38,5 +40,6 @@ class ListViewProps {
     this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
     this.restorationId,
     this.clipBehavior = Clip.hardEdge,
+    this.listBuilder,
   });
 }

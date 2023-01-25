@@ -15,7 +15,7 @@ class PopupProps<T> {
   final TextFieldProps searchFieldProps;
 
   /// props for selection list view
-  final ListViewProps listViewProps;
+  final ListViewProps<T> listViewProps;
 
   /// scrollbar properties
   final ScrollbarProps scrollbarProps;

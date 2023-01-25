@@ -165,46 +165,95 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                               widget.popupProps.scrollbarProps.trackColor,
                           trackRadius:
                               widget.popupProps.scrollbarProps.trackRadius,
-                          child: ListView.builder(
-                            controller:
-                                widget.popupProps.listViewProps.controller ??
-                                    scrollController,
-                            shrinkWrap:
-                                widget.popupProps.listViewProps.shrinkWrap,
-                            padding: widget.popupProps.listViewProps.padding,
-                            scrollDirection:
-                                widget.popupProps.listViewProps.scrollDirection,
-                            reverse: widget.popupProps.listViewProps.reverse,
-                            primary: widget.popupProps.listViewProps.primary,
-                            physics: widget.popupProps.listViewProps.physics,
-                            itemExtent:
-                                widget.popupProps.listViewProps.itemExtent,
-                            addAutomaticKeepAlives: widget.popupProps
-                                .listViewProps.addAutomaticKeepAlives,
-                            addRepaintBoundaries: widget
-                                .popupProps.listViewProps.addRepaintBoundaries,
-                            addSemanticIndexes: widget
-                                .popupProps.listViewProps.addSemanticIndexes,
-                            cacheExtent:
-                                widget.popupProps.listViewProps.cacheExtent,
-                            semanticChildCount: widget
-                                .popupProps.listViewProps.semanticChildCount,
-                            dragStartBehavior: widget
-                                .popupProps.listViewProps.dragStartBehavior,
-                            keyboardDismissBehavior: widget.popupProps
-                                .listViewProps.keyboardDismissBehavior,
-                            restorationId:
-                                widget.popupProps.listViewProps.restorationId,
-                            clipBehavior:
-                                widget.popupProps.listViewProps.clipBehavior,
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (context, index) {
-                              var item = snapshot.data![index];
-                              return widget.isMultiSelectionMode
-                                  ? _itemWidgetMultiSelection(item)
-                                  : _itemWidgetSingleSelection(item);
-                            },
-                          ),
+                          child: widget.popupProps.listViewProps.listBuilder ==
+                                  null
+                              ? ListView.builder(
+                                  controller: widget.popupProps.listViewProps
+                                          .controller ??
+                                      scrollController,
+                                  shrinkWrap: widget
+                                      .popupProps.listViewProps.shrinkWrap,
+                                  padding:
+                                      widget.popupProps.listViewProps.padding,
+                                  scrollDirection: widget
+                                      .popupProps.listViewProps.scrollDirection,
+                                  reverse:
+                                      widget.popupProps.listViewProps.reverse,
+                                  primary:
+                                      widget.popupProps.listViewProps.primary,
+                                  physics:
+                                      widget.popupProps.listViewProps.physics,
+                                  itemExtent: widget
+                                      .popupProps.listViewProps.itemExtent,
+                                  addAutomaticKeepAlives: widget.popupProps
+                                      .listViewProps.addAutomaticKeepAlives,
+                                  addRepaintBoundaries: widget.popupProps
+                                      .listViewProps.addRepaintBoundaries,
+                                  addSemanticIndexes: widget.popupProps
+                                      .listViewProps.addSemanticIndexes,
+                                  cacheExtent: widget
+                                      .popupProps.listViewProps.cacheExtent,
+                                  semanticChildCount: widget.popupProps
+                                      .listViewProps.semanticChildCount,
+                                  dragStartBehavior: widget.popupProps
+                                      .listViewProps.dragStartBehavior,
+                                  keyboardDismissBehavior: widget.popupProps
+                                      .listViewProps.keyboardDismissBehavior,
+                                  restorationId: widget
+                                      .popupProps.listViewProps.restorationId,
+                                  clipBehavior: widget
+                                      .popupProps.listViewProps.clipBehavior,
+                                  itemCount: snapshot.data!.length,
+                                  itemBuilder: (context, index) {
+                                    var item = snapshot.data![index];
+                                    return widget.isMultiSelectionMode
+                                        ? _itemWidgetMultiSelection(item)
+                                        : _itemWidgetSingleSelection(item);
+                                  },
+                                )
+                              : ListView(
+                                  controller: widget.popupProps.listViewProps
+                                          .controller ??
+                                      scrollController,
+                                  shrinkWrap: widget
+                                      .popupProps.listViewProps.shrinkWrap,
+                                  padding:
+                                      widget.popupProps.listViewProps.padding,
+                                  scrollDirection: widget
+                                      .popupProps.listViewProps.scrollDirection,
+                                  reverse:
+                                      widget.popupProps.listViewProps.reverse,
+                                  primary:
+                                      widget.popupProps.listViewProps.primary,
+                                  physics:
+                                      widget.popupProps.listViewProps.physics,
+                                  itemExtent: widget
+                                      .popupProps.listViewProps.itemExtent,
+                                  addAutomaticKeepAlives: widget.popupProps
+                                      .listViewProps.addAutomaticKeepAlives,
+                                  addRepaintBoundaries: widget.popupProps
+                                      .listViewProps.addRepaintBoundaries,
+                                  addSemanticIndexes: widget.popupProps
+                                      .listViewProps.addSemanticIndexes,
+                                  cacheExtent: widget
+                                      .popupProps.listViewProps.cacheExtent,
+                                  semanticChildCount: widget.popupProps
+                                      .listViewProps.semanticChildCount,
+                                  dragStartBehavior: widget.popupProps
+                                      .listViewProps.dragStartBehavior,
+                                  keyboardDismissBehavior: widget.popupProps
+                                      .listViewProps.keyboardDismissBehavior,
+                                  restorationId: widget
+                                      .popupProps.listViewProps.restorationId,
+                                  clipBehavior: widget
+                                      .popupProps.listViewProps.clipBehavior,
+                                  children: widget.popupProps.listViewProps
+                                      .listBuilder!(snapshot.data!, (item) {
+                                    return widget.isMultiSelectionMode
+                                        ? _itemWidgetMultiSelection(item)
+                                        : _itemWidgetSingleSelection(item);
+                                  }),
+                                ),
                         );
                       },
                     ),
