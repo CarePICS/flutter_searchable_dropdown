@@ -13,7 +13,8 @@ class ModalBottomSheetProps {
   final bool enableDrag;
   final Offset? anchorPoint;
   final bool isScrollControlled;
-  final EdgeInsets? padding;
+  final EdgeInsets padding;
+  final bool useSafeArea;
 
   const ModalBottomSheetProps({
     this.anchorPoint,
@@ -28,6 +29,7 @@ class ModalBottomSheetProps {
     this.useRootNavigator = false,
     this.constraints,
     this.isScrollControlled = true,
-    this.padding,
+    this.padding = EdgeInsets.zero,
+    this.useSafeArea = true,
   });
 }

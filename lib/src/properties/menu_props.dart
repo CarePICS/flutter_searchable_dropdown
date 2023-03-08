@@ -17,6 +17,7 @@ class MenuProps {
   final Curve? barrierCurve;
   final String? barrierLabel;
   final PositionCallback? positionCallback;
+  final bool useRootNavigator;
 
   const MenuProps({
     this.barrierLabel,
@@ -26,6 +27,7 @@ class MenuProps {
     this.positionCallback,
     this.barrierColor,
     this.backgroundColor,
+    this.useRootNavigator = false,
     this.barrierDismissible = true,
     this.animation,
     this.clipBehavior = Clip.none,
