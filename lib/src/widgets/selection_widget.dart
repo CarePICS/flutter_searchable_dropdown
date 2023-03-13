@@ -95,11 +95,18 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: widget.popupProps.constraints,
-      child: widget.popupProps.containerBuilder == null
-          ? _defaultWidget()
-          : widget.popupProps.containerBuilder!(context, _defaultWidget()),
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
+
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: bottom,
+      ),
+      child: ConstrainedBox(
+        constraints: widget.popupProps.constraints,
+        child: widget.popupProps.containerBuilder == null
+            ? _defaultWidget()
+            : widget.popupProps.containerBuilder!(context, _defaultWidget()),
+      ),
     );
   }
 
