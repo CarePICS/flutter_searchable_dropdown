@@ -606,9 +606,8 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
               ..removeWhere((i) => _isEqual(newSelectedItem, i));
         if (widget.popupProps.onItemRemoved != null) widget.popupProps.onItemRemoved!(_selectedItems, newSelectedItem);
       } else {
-        _selectedItemsNotifier.value =
-            widget.popupProps.processItemAdded?.call(_selectedItems, newSelectedItem) ?? List.from(_selectedItems)
-              ..add(newSelectedItem);
+        _selectedItemsNotifier.value = widget.popupProps.processItemAdded?.call(_selectedItems, newSelectedItem) ??
+            [..._selectedItems, newSelectedItem];
         if (widget.popupProps.onItemAdded != null) widget.popupProps.onItemAdded!(_selectedItems, newSelectedItem);
       }
     } else {
