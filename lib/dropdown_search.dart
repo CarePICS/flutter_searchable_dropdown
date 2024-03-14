@@ -40,7 +40,7 @@ typedef Widget DropdownSearchPopupItemBuilder<T>(
   T item,
   bool isSelected,
 );
-typedef bool DropdownSearchPopupItemEnabled<T>(T item);
+typedef bool DropdownSearchPopupItemEnabled<T>(List<T> selectedItems, T item);
 typedef Widget ErrorBuilder<T>(
   BuildContext context,
   String searchEntry,
@@ -72,6 +72,10 @@ typedef RelativeRect PositionCallback(
 
 typedef void OnItemAdded<T>(List<T> selectedItems, T addedItem);
 typedef void OnItemRemoved<T>(List<T> selectedItems, T removedItem);
+
+typedef List<T> ProcessItemAdded<T>(List<T> selectedItems, T addedItem);
+typedef List<T> ProcessItemRemoved<T>(List<T> selectedItems, T removedItem);
+
 typedef Widget PopupBuilder(BuildContext context, Widget popupWidget);
 
 ///[items] are the original item from [items] or/and [asyncItems]
@@ -372,7 +376,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       builder: (FormFieldState<T> state) {
         if (state.value != getSelectedItem) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if(mounted) {
+            if (mounted) {
               state.didChange(getSelectedItem);
             }
           });
@@ -404,7 +408,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       builder: (FormFieldState<List<T>> state) {
         if (state.value != getSelectedItems) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if(mounted) {
+            if (mounted) {
               state.didChange(getSelectedItems);
             }
           });

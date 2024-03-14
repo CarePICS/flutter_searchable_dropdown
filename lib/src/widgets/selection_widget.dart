@@ -451,7 +451,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
   }
 
   bool _isDisabled(T item) =>
-      widget.popupProps.disabledItemFn != null && (widget.popupProps.disabledItemFn!(item)) == true;
+      widget.popupProps.disabledItemFn != null && (widget.popupProps.disabledItemFn!(_selectedItems, item)) == true;
 
   /// selected item will be highlighted only when [widget.showSelectedItems] is true,
   /// if our object is String [widget.compareFn] is not required , other wises it's required
@@ -601,10 +601,14 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
   void _handleSelectedItem(T newSelectedItem) {
     if (widget.isMultiSelectionMode) {
       if (_isSelectedItem(newSelectedItem)) {
-        _selectedItemsNotifier.value = List.from(_selectedItems)..removeWhere((i) => _isEqual(newSelectedItem, i));
+        _selectedItemsNotifier.value =
+            widget.popupProps.processItemRemoved?.call(_selectedItems, newSelectedItem) ?? List.from(_selectedItems)
+              ..removeWhere((i) => _isEqual(newSelectedItem, i));
         if (widget.popupProps.onItemRemoved != null) widget.popupProps.onItemRemoved!(_selectedItems, newSelectedItem);
       } else {
-        _selectedItemsNotifier.value = List.from(_selectedItems)..add(newSelectedItem);
+        _selectedItemsNotifier.value =
+            widget.popupProps.processItemAdded?.call(_selectedItems, newSelectedItem) ?? List.from(_selectedItems)
+              ..add(newSelectedItem);
         if (widget.popupProps.onItemAdded != null) widget.popupProps.onItemAdded!(_selectedItems, newSelectedItem);
       }
     } else {

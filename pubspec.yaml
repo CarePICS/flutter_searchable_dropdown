@@ -6,8 +6,8 @@ git: https://github.com/salim-lachdhaf/searchable_dropdown
 repository: https://github.com/salim-lachdhaf/searchable_dropdown
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
-
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: 3.19.2
 
 dependencies:
   flutter:

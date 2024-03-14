@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       popupProps: PopupPropsMultiSelection.modalBottomSheet(
-                        disabledItemFn: (int i) => i <= 3,
+                        disabledItemFn: (List<int> selected, int i) => i <= 3,
                       ),
                     ),
                   )

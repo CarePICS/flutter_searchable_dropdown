@@ -222,6 +222,10 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
   ///called when a new item added on Multi selection mode
   final OnItemRemoved<T>? onItemRemoved;
 
+  final ProcessItemAdded<T>? processItemAdded;
+
+  final ProcessItemRemoved<T>? processItemRemoved;
+
   ///widget used to show checked items in multiSelection mode
   final DropdownSearchPopupItemBuilder<T>? selectionWidget;
 
@@ -257,6 +261,8 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
     super.interceptCallBacks = false,
     this.onItemAdded,
     this.onItemRemoved,
+    this.processItemAdded,
+    this.processItemRemoved,
     this.selectionWidget,
     this.validationWidgetBuilder,
     this.textDirection = TextDirection.ltr,
@@ -285,6 +291,8 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
     super.interceptCallBacks = false,
     this.onItemAdded,
     this.onItemRemoved,
+    this.processItemAdded,
+    this.processItemRemoved,
     this.selectionWidget,
     this.validationWidgetBuilder,
     this.textDirection = TextDirection.ltr,
@@ -317,6 +325,8 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
     super.interceptCallBacks = false,
     this.onItemAdded,
     this.onItemRemoved,
+    this.processItemAdded,
+    this.processItemRemoved,
     this.selectionWidget,
     this.validationWidgetBuilder,
     this.textDirection = TextDirection.ltr,
@@ -345,6 +355,8 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
     super.interceptCallBacks = false,
     this.onItemAdded,
     this.onItemRemoved,
+    this.processItemAdded,
+    this.processItemRemoved,
     this.selectionWidget,
     this.validationWidgetBuilder,
     this.textDirection = TextDirection.ltr,
@@ -373,6 +385,8 @@ class PopupPropsMultiSelection<T> extends PopupProps<T> {
     super.interceptCallBacks = false,
     this.onItemAdded,
     this.onItemRemoved,
+    this.processItemAdded,
+    this.processItemRemoved,
     this.selectionWidget,
     this.validationWidgetBuilder,
     this.textDirection = TextDirection.ltr,
